@@ -1,8 +1,8 @@
 {
-  outputs = {
+  outputs = inputs: with inputs; {
     templates = {
       rust = {
-        path = ./nix;
+        path = ./rust;
         description = "Standard configuration for new rust projects.";
       };
     };
