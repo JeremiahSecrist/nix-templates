@@ -17,8 +17,6 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
-      - name: move to sub dir
-        run: cd ./rust
       - name: Run nix checks
         run: nix flake check .
       - name: Run non derivation checks
