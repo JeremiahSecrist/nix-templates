@@ -5,6 +5,10 @@ on:
   pull_request:
     branches:
     - main
+  push:
+    branches:
+      - main
+      - 'releases/**'
     
 jobs:
   check:
@@ -17,9 +21,12 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
-      - name: move to sub dir
-        run: cd ./rust
       - name: Run nix checks
-        run: nix flake check .
+        run: >
+          nix flake check .
+          nix flake check ./rust
       - name: Run non derivation checks
-        run : nix run .#ci-all
+        run : >
+          pushd ./rust
+          nix run .\#ci-all
+          popd
