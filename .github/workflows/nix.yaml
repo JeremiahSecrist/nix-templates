@@ -22,14 +22,14 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
       - name: Run nix checks
-        run: >
+        run: |
           nix flake check .
           pushd ./rust
           nix flake check .
           popd
-          
+
       - name: Run non derivation checks
-        run : >
+        run : |
           pushd ./rust
           nix run .\#ci-all
           popd
