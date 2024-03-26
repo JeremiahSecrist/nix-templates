@@ -24,7 +24,10 @@ jobs:
       - name: Run nix checks
         run: >
           nix flake check .
-          nix flake check ./rust
+          pushd ./rust
+          nix flake check .
+          popd
+          
       - name: Run non derivation checks
         run : >
           pushd ./rust
