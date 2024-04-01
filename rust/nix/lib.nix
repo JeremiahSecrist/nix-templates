@@ -66,6 +66,7 @@ in {
         cargo-deps
         cargo-diet
         cargo-llvm-lines
+        cargo-tarpaulin
         cargo-msrv
         cargo-rr
         cargo-sort
